@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealScreen from '../screens/CategoryMealScreen';
+import MealDetailsScreen from '../screens/MealDetailsScreen';
 
 import { colors, screens } from '../config';
 
@@ -32,6 +33,11 @@ const MealsNavigator = () => {
           name={screens.categoryMeal}
           component={CategoryMealScreen}
           options={({ route }) => ({ title: route.params.category.title })}
+        />
+        <Stack.Screen
+          name={screens.mealDetails}
+          component={MealDetailsScreen}
+          options={({ route }) => ({ title: route.params.meal.title })}
         />
       </Stack.Navigator>
     </NavigationContainer>

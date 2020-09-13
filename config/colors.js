@@ -8,4 +8,7 @@ export default {
   text: '#333333',
   header: Platform.OS === "android" ? primary_Android : '',
   headerText: Platform.OS === "android" ? 'white' : primary_iOS,
+  white: '#ffffff',
+  black: '#000000',
+  gray200: '#DCDCDC',
 }
