@@ -7,7 +7,6 @@ import CategoryMealScreen from '../screens/CategoryMealScreen';
 
 import { colors, screens } from '../config';
 
-const { Navigator, Screen } = createStackNavigator();
 const headerOptions = {
   headerStyle: {
     backgroundColor: colors.header,
@@ -18,24 +17,23 @@ const headerOptions = {
   headerTintColor: colors.headerText,
 };
 
+const Stack = createStackNavigator();
+
 const MealsNavigator = () => {
   return (
     <NavigationContainer>
-      <Navigator>
-        <Screen
+      <Stack.Navigator screenOptions={headerOptions}>
+        <Stack.Screen
           name={screens.categories}
           component={CategoriesScreen}
-          options={{ title: 'Categories', ...headerOptions }}
+          options={{ title: 'Categories' }}
         />
-        <Screen
+        <Stack.Screen
           name={screens.categoryMeal}
           component={CategoryMealScreen}
-          options={({ route }) => ({
-            title: route.params.category.title,
-            ...headerOptions,
-          })}
+          options={({ route }) => ({ title: route.params.category.title })}
         />
-      </Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

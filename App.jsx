@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import React from 'react';
+import { useFonts } from 'expo-font';
+import { fonts, colors } from './config';
 import MealsNavigator from './navigation/MealsNavigation';
+import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
 
-const fetchFotns = () => {
-  return Font.loadAsync({
-    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-  });
+const fontsObj = {
+  [fonts.primary]: require('./assets/fonts/OpenSans-Regular.ttf'),
+  [fonts.primaryBold]: require('./assets/fonts/OpenSans-Bold.ttf'),
 };
 
 export default function App() {
-  const [loaded, setLoaded] = useState();
+  const [loaded] = useFonts(fontsObj);
 
   if (!loaded) {
     return (
-      <AppLoading startAsync={fetchFotns} onFinish={() => setLoaded(true)} />
+      <View style={styles.container}>
+        <View>
+          <ActivityIndicator size='large' color={colors.primary} />
+          <Text style={styles.title}>Recipes App</Text>
+        </View>
+      </View>
     );
   }
 
   return <MealsNavigator />;
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 22,
+    marginTop: 16,
+  },
+});
