@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFonts } from 'expo-font';
 import { fonts, colors } from './config';
-import MealsNavigator from './navigation/MealsNavigation';
+import MealsNavigator from './MealsNavigator';
 import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
 
 const fontsObj = {
