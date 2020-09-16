@@ -9,7 +9,7 @@ const fontsObj = {
   [fonts.primaryBold]: require('./assets/fonts/OpenSans-Bold.ttf'),
 };
 
-export default function App() {
+const App = () => {
   const [loaded] = useFonts(fontsObj);
 
   if (!loaded) {
@@ -25,6 +25,8 @@ export default function App() {
 
   return <MealsNavigator />;
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {

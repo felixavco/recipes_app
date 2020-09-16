@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontFamily: fonts.primaryBold,
     fontSize: 20,
     color: colors.white,
-    textShadowColor: colors.black,
-    textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 7,
     textAlign: 'center',
+    textShadowColor: colors.black,
+    fontFamily: fonts.primaryBold,
+    textShadowOffset: { width: -1, height: 1 },
   },
 
   row: {
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
   },
 
   detailText: {
-    fontFamily: fonts.primary,
-    color: colors.white,
     fontSize: 15,
+    color: colors.white,
+    fontFamily: fonts.primary,
   },
 });

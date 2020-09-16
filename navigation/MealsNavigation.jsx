@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealScreen from '../screens/CategoryMealScreen';
 import MealDetailsScreen from '../screens/MealDetailsScreen';
+import HeaderButton from '../components/HeaderButton';
 
 import { colors, screens } from '../config';
 
@@ -19,6 +21,18 @@ const headerOptions = {
 };
 
 const Stack = createStackNavigator();
+
+const mealDetailsHButton = ({ params }) => ({
+  headerRight: () => (
+    <HeaderButtons HeaderButtonComponent={HeaderButton}>
+      <Item
+        title="Favorite"
+        iconName="ios-heart"
+        onPress={() => console.log('AddedToFAvorite', params.meal.title)}
+      />
+    </HeaderButtons>
+  ),
+});
 
 const MealsNavigator = () => {
   return (
@@ -37,7 +51,10 @@ const MealsNavigator = () => {
         <Stack.Screen
           name={screens.mealDetails}
           component={MealDetailsScreen}
-          options={({ route }) => ({ title: route.params.meal.title })}
+          options={({ route }) => ({
+            title: route.params.meal.title,
+            ...mealDetailsHButton(route),
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
